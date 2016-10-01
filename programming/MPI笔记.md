@@ -1,6 +1,7 @@
 #MPI±Ê¼Ç
-Leoeon    
-2014.07.30
+
+Author:	Leoeon    
+Date:	2014.07.30
 
 
 ## 1 »ù±¾¿ò¼Ü

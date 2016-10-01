@@ -1,6 +1,7 @@
 ﻿#OpenCL笔记
-Leoeon    
-2015.07.04
+
+Author:	Leoeon    
+Date:	2015.07.04
 
 ```
 cl_int 调用状态;
