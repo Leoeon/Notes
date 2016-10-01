@@ -8,7 +8,8 @@ cl_int 调用状态;
 调用状态==CL_SUCCESS
 ```
 
-### 1.主机——设备交互
+## 1.主机——设备交互
+
 ```
 cl_uint 平台数目;
 cl_int 调用状态 = clGetPlatformIDs( 0, NULL, cl_uint* (&平台数目));
@@ -30,7 +31,8 @@ cl_int 调用状态 = clGetDeviceIDs( cl_platform_id 平台列表[0], cl_device_
 		CL_DEVICE_TYPE_ALL：所有设备
 ```
 	
-### 2.执行环境
+## 2.执行环境
+
 ```
 cl_context 上下文 = clCreateContext( const cl_context_properties* 上下文属性, cl_uint 设备数目, const cl_device_id* 设备列表, void(*回调函数), void* 回调函数实参, cl_int* (&调用状态));
 	//新建上下文，用于协调主机——设备之间的交互机制，即管理命令队列、内存、程序和内核等对象，并在上下文所指定的一个或多个设备上执行内核
@@ -53,7 +55,9 @@ cl_int clSetCommandQueueProperty ( cl_command_queue 命令队列, cl_command_que
 		CL_TRUE：允许
 		CL_FALSE：禁止
 ```
-### 3.缓冲对象
+
+## 3.缓冲对象
+
 以数组形式读写内存
 ```		
 cl_mem 内存空间 = clCreateBuffer( cl_context 上下文, cl_mem_flags 读写状态, size_t 内存大小, void* host_ptr, cl_int* (&调用状态));
@@ -117,7 +121,7 @@ MAP读写状态：CL_MAP_READ 或 CL_MAP_WRITE
 	
 event_wait_list和num_events_in_wait_list指定在执行此命令前必须完成的事件，event返回一个事件对象用来标识此读写命令，也可以用来查询或等待此命令的完成
 	
-### 4.内存模型
+## 4.内存模型
     
 全局内存：__global，设备中所有计算单位共享    
 常量内存：__constant，设备中所有计算单位共享    
@@ -142,7 +146,8 @@ get_global_id(第几维);		//返回该维上当前work-item在全局中的索引
 get_local_id(第几维);		//返回该维上当前work-item在work-group中的索引
 ```
 
-### 5.执行函数
+## 5.执行函数
+
 ```
 cl_program 核代码对象 = clCreateProgramWithSource( cl_context 上下文, cl_uint 核代码串数量, (const char**)&核代码, const size_t* 核代码串长度, cl_int* (&调用状态));
 	//生成相关代码
@@ -184,7 +189,7 @@ cl_int 调用状态 = clFinish( cl_command_queue 命令队列);
 	//阻塞至命令队列中的所有命令完成
 ```
 	
-### 6.查看过程信息
+## 6.查看过程信息
 
 查询的通用用法示例：
 ```
@@ -272,7 +277,8 @@ cl_ulong startTime;
 clGetEventProfilingInfo( ev, CL_PROFILING_COMMAND_START, sizeof(cl_ulong), &startTime, NULL);	
 ```
 
-### 7.释放
+## 7.释放
+
 ```
 clReleaseKernel(核对象);
 clReleaseProgram(核代码对象);
@@ -282,7 +288,8 @@ clReleaseMemObject(内存空间);
 clReleaseContext(上下文);
 ```
 
-### 8.采样器
+## 8.采样器
+
 ```	
 cl_sampler 采样器 = clCreateSampler( cl_context 上下文, cl_bool 是否规范化, cl_addressing_mode 处理越界图像坐标方式, cl_filter_mode 读取图像时所采用的滤波模式, cl_int* (&调用状态))
 	//创建一个采样器对象
