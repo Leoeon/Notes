@@ -366,12 +366,31 @@ MPI_Graph_neighbors( 无向图通信子, int 秩, int 邻居数, int*邻居列表 );
 	
 ## 7 其他
 
-### 7.1 I/O处理	
+### 7.1 编译与运行
+
+OpenMPI:
+```
+mpicc mpi_hello.c -o mpi_hello.out 	
+mpiexec -n 4 ./mpi_hello.out
+```
+IntelMPI：
+```
+mpiicpc mpi_hello.c -o mpi_hello.out 
+mpirun -n 4 ./mpi_hello.out
+```
+windows下MS_MPI的用法：    
+（环境变量 C_INCLUDEDE_PATH、CPLUS_INCLUDE_PATH、LIBRARY_PATH、Path）    
+```	
+g++ mpi_hello.cpp -o mpi_hello.exe -lmsmpi
+mpiexec -n 4 mpi_hello.exe
+```
+
+### 7.2 I/O处理	
 		
 - 所有进程都能输出stdout    
 - 仅0号进程能读入stdin
 
-### 7.2 空对象
+### 7.3 空对象
 
 ```
 MPI_COMM_NULL      	空通信器
