@@ -1,297 +1,297 @@
-#OpenCL±Ê¼Ç
+ï»¿#OpenCLç¬”è®°
 Leoeon    
 2014.06.02
 
 ```
-cl_int µ÷ÓÃ×´Ì¬;
-º¯Êıµ÷ÓÃºó¶¼Ó¦¼ì²éÊÇ·ñ µ÷ÓÃ×´Ì¬==CL_SUCCESS
+cl_int è°ƒç”¨çŠ¶æ€;
+å‡½æ•°è°ƒç”¨åéƒ½åº”æ£€æŸ¥æ˜¯å¦ è°ƒç”¨çŠ¶æ€==CL_SUCCESS
 ```
 
-### 1.Ö÷»ú¡ª¡ªÉè±¸½»»¥
+### 1.ä¸»æœºâ€”â€”è®¾å¤‡äº¤äº’
 ```
-cl_uint Æ½Ì¨ÊıÄ¿;
-cl_int µ÷ÓÃ×´Ì¬ = clGetPlatformIDs( 0, NULL, cl_uint* (&Æ½Ì¨ÊıÄ¿));
-cl_platform_id *Æ½Ì¨ÁĞ±í = £¨cl_platform_id*) malloc(Æ½Ì¨ÊıÄ¿*sizeof(cl_platform_id));
-cl_int µ÷ÓÃ×´Ì¬ = clGetPlatformIDs( cl_uint Æ½Ì¨ÊıÄ¿, cl_platform_id* Æ½Ì¨ÁĞ±í, NULL);
-	//»ñÈ¡Ö¸¶¨ÏµÍ³ÉÏ¿ÉÓÃµÄ¼ÆËãÆ½Ì¨
+cl_uint å¹³å°æ•°ç›®;
+cl_int è°ƒç”¨çŠ¶æ€ = clGetPlatformIDs( 0, NULL, cl_uint* (&å¹³å°æ•°ç›®));
+cl_platform_id *å¹³å°åˆ—è¡¨ = ï¼ˆcl_platform_id*) malloc(å¹³å°æ•°ç›®*sizeof(cl_platform_id));
+cl_int è°ƒç”¨çŠ¶æ€ = clGetPlatformIDs( cl_uint å¹³å°æ•°ç›®, cl_platform_id* å¹³å°åˆ—è¡¨, NULL);
+	//è·å–æŒ‡å®šç³»ç»Ÿä¸Šå¯ç”¨çš„è®¡ç®—å¹³å°
 ```
 ```	
-cl_uint Éè±¸ÊıÄ¿;
-cl_int µ÷ÓÃ×´Ì¬ = clGetDeviceIDs( cl_platform_id Æ½Ì¨ÁĞ±í[0], cl_device_type Éè±¸ÀàĞÍ, 0, NULL, cl_uint* (&Éè±¸ÊıÄ¿))
-cl_device_id *Éè±¸ÁĞ±í = (cl_device_id*)malloc(Éè±¸ÊıÄ¿*sizeof(cl_device_id));
-cl_int µ÷ÓÃ×´Ì¬ = clGetDeviceIDs( cl_platform_id Æ½Ì¨ÁĞ±í[0], cl_device_type Éè±¸ÀàĞÍ, cl_uint Éè±¸ÊıÄ¿, cl_device_id* Éè±¸ÁĞ±í, NULL);
-	//»ñÈ¡Ö¸¶¨Æ½Ì¨ÉÏ¿ÉÓÃµÄ¼ÆËãÉè±¸
-	//Éè±¸ÀàĞÍ£º
-		CL_DEVICE_TYPE_GPU£º½öGPU
-		CL_DEVICE_TYPE_CPU£º½öCPU
-		CL_DEVICE_TYPE_ACCELERATOR£ºOpenGL ×¨ÓÃ¼ÓËÙÆ÷
-		CL_DEVICE_TYPE_DEFAULT£ºÏµÍ³Ä¬ÈÏOpenCLÉè±¸
-		CL_DEVICE_TYPE_ALL£ºËùÓĞÉè±¸
+cl_uint è®¾å¤‡æ•°ç›®;
+cl_int è°ƒç”¨çŠ¶æ€ = clGetDeviceIDs( cl_platform_id å¹³å°åˆ—è¡¨[0], cl_device_type è®¾å¤‡ç±»å‹, 0, NULL, cl_uint* (&è®¾å¤‡æ•°ç›®))
+cl_device_id *è®¾å¤‡åˆ—è¡¨ = (cl_device_id*)malloc(è®¾å¤‡æ•°ç›®*sizeof(cl_device_id));
+cl_int è°ƒç”¨çŠ¶æ€ = clGetDeviceIDs( cl_platform_id å¹³å°åˆ—è¡¨[0], cl_device_type è®¾å¤‡ç±»å‹, cl_uint è®¾å¤‡æ•°ç›®, cl_device_id* è®¾å¤‡åˆ—è¡¨, NULL);
+	//è·å–æŒ‡å®šå¹³å°ä¸Šå¯ç”¨çš„è®¡ç®—è®¾å¤‡
+	//è®¾å¤‡ç±»å‹ï¼š
+		CL_DEVICE_TYPE_GPUï¼šä»…GPU
+		CL_DEVICE_TYPE_CPUï¼šä»…CPU
+		CL_DEVICE_TYPE_ACCELERATORï¼šOpenGL ä¸“ç”¨åŠ é€Ÿå™¨
+		CL_DEVICE_TYPE_DEFAULTï¼šç³»ç»Ÿé»˜è®¤OpenCLè®¾å¤‡
+		CL_DEVICE_TYPE_ALLï¼šæ‰€æœ‰è®¾å¤‡
 ```
 	
-### 2.Ö´ĞĞ»·¾³
+### 2.æ‰§è¡Œç¯å¢ƒ
 ```
-cl_context ÉÏÏÂÎÄ = clCreateContext( const cl_context_properties* ÉÏÏÂÎÄÊôĞÔ, cl_uint Éè±¸ÊıÄ¿, const cl_device_id* Éè±¸ÁĞ±í, void(*»Øµ÷º¯Êı), void* »Øµ÷º¯ÊıÊµ²Î, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//ĞÂ½¨ÉÏÏÂÎÄ£¬ÓÃÓÚĞ­µ÷Ö÷»ú¡ª¡ªÉè±¸Ö®¼äµÄ½»»¥»úÖÆ£¬¼´¹ÜÀíÃüÁî¶ÓÁĞ¡¢ÄÚ´æ¡¢³ÌĞòºÍÄÚºËµÈ¶ÔÏó£¬²¢ÔÚÉÏÏÂÎÄËùÖ¸¶¨µÄÒ»¸ö»ò¶à¸öÉè±¸ÉÏÖ´ĞĞÄÚºË
-//»ò
-cl_context ÉÏÏÂÎÄ = clCreateContextFromType ( cl_context_properties* ÉÏÏÂÎÄÊôĞÔ, cl_device_type Éè±¸ÀàĞÍ,void(*»Øµ÷º¯Êı), void* »Øµ÷º¯ÊıÊµ²Î, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//¸ù¾İÉè±¸ÀàĞÍ´´½¨Ò»¸öOpenCLÉÏÏÂÎÄ£¬´ËÉè±¸ÀàĞÍÓÃÀ´±êÊ¶ÒªÊ¹ÓÃµÄÉè±¸
-	//ÉÏÏÂÎÄÊôĞÔÖ¸ÏòÒ»¸öÁĞ±í£¬ÆäÖĞÓĞÉÏÏÂÎÄÊôĞÔÃû³Æ¼°Æä¶ÔÓ¦µÄÖµ¡£Ã¿¸öÊôĞÔÃû³ÆºóÃæ½ô¸úÆä¶ÔÓ¦µÄÆÚÍûÖµ
-	//void(*»Øµ÷º¯Êı)( const char* errinfo, const void* private_info, size_t cb, void* »Øµ÷º¯ÊıĞÎ²Î);
+cl_context ä¸Šä¸‹æ–‡ = clCreateContext( const cl_context_properties* ä¸Šä¸‹æ–‡å±æ€§, cl_uint è®¾å¤‡æ•°ç›®, const cl_device_id* è®¾å¤‡åˆ—è¡¨, void(*å›è°ƒå‡½æ•°), void* å›è°ƒå‡½æ•°å®å‚, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//æ–°å»ºä¸Šä¸‹æ–‡ï¼Œç”¨äºåè°ƒä¸»æœºâ€”â€”è®¾å¤‡ä¹‹é—´çš„äº¤äº’æœºåˆ¶ï¼Œå³ç®¡ç†å‘½ä»¤é˜Ÿåˆ—ã€å†…å­˜ã€ç¨‹åºå’Œå†…æ ¸ç­‰å¯¹è±¡ï¼Œå¹¶åœ¨ä¸Šä¸‹æ–‡æ‰€æŒ‡å®šçš„ä¸€ä¸ªæˆ–å¤šä¸ªè®¾å¤‡ä¸Šæ‰§è¡Œå†…æ ¸
+//æˆ–
+cl_context ä¸Šä¸‹æ–‡ = clCreateContextFromType ( cl_context_properties* ä¸Šä¸‹æ–‡å±æ€§, cl_device_type è®¾å¤‡ç±»å‹,void(*å›è°ƒå‡½æ•°), void* å›è°ƒå‡½æ•°å®å‚, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//æ ¹æ®è®¾å¤‡ç±»å‹åˆ›å»ºä¸€ä¸ªOpenCLä¸Šä¸‹æ–‡ï¼Œæ­¤è®¾å¤‡ç±»å‹ç”¨æ¥æ ‡è¯†è¦ä½¿ç”¨çš„è®¾å¤‡
+	//ä¸Šä¸‹æ–‡å±æ€§æŒ‡å‘ä¸€ä¸ªåˆ—è¡¨ï¼Œå…¶ä¸­æœ‰ä¸Šä¸‹æ–‡å±æ€§åç§°åŠå…¶å¯¹åº”çš„å€¼ã€‚æ¯ä¸ªå±æ€§åç§°åé¢ç´§è·Ÿå…¶å¯¹åº”çš„æœŸæœ›å€¼
+	//void(*å›è°ƒå‡½æ•°)( const char* errinfo, const void* private_info, size_t cb, void* å›è°ƒå‡½æ•°å½¢å‚);
 ```
 ```	
-cl_command_queue ÃüÁî¶ÓÁĞ = clCreateCommandQueue( cl_context ÉÏÏÂÎÄ, cl_device_id Éè±¸ÁĞ±í[0], cl_command_queue_properties ¶ÓÁĞÊôĞÔ, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//ĞÂ½¨ÃüÁî¶ÓÁĞ²¢¹ØÁªµ½Éè±¸
-	//Ã¿¸öÃüÁî¶ÓÁĞÖ»¹ØÁªÒ»¸öÉè±¸
-	//¶ÓÁĞÊôĞÔ£º
-		CL_QUEUE_PROFILING_ENABLE£º³ÌĞòÆÊÎö
-		CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE£ºÂÒĞòÖ´ĞĞÃüÁî¡££¨ÓÉÓÃ»§Ö¸¶¨ÒÀÀµ¹ØÏµÒÔÈ·±£ÕıÈ·µÄÖ´ĞĞË³Ğò£©
-cl_int clSetCommandQueueProperty ( cl_command_queue ÃüÁî¶ÓÁĞ, cl_command_queue_properties ¶ÓÁĞÊôĞÔ, cl_bool ÄÜ·ñ, cl_command_queue_properties* Ö®Ç°µÄÊôĞÔ);
-	//Ê¹ÄÜ»ò½ûÖ¹ÃüÁî¶ÓÁĞµÄÊôĞÔ
-	//ÄÜ·ñ£º
-		CL_TRUE£ºÔÊĞí
-		CL_FALSE£º½ûÖ¹
+cl_command_queue å‘½ä»¤é˜Ÿåˆ— = clCreateCommandQueue( cl_context ä¸Šä¸‹æ–‡, cl_device_id è®¾å¤‡åˆ—è¡¨[0], cl_command_queue_properties é˜Ÿåˆ—å±æ€§, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//æ–°å»ºå‘½ä»¤é˜Ÿåˆ—å¹¶å…³è”åˆ°è®¾å¤‡
+	//æ¯ä¸ªå‘½ä»¤é˜Ÿåˆ—åªå…³è”ä¸€ä¸ªè®¾å¤‡
+	//é˜Ÿåˆ—å±æ€§ï¼š
+		CL_QUEUE_PROFILING_ENABLEï¼šç¨‹åºå‰–æ
+		CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLEï¼šä¹±åºæ‰§è¡Œå‘½ä»¤ã€‚ï¼ˆç”±ç”¨æˆ·æŒ‡å®šä¾èµ–å…³ç³»ä»¥ç¡®ä¿æ­£ç¡®çš„æ‰§è¡Œé¡ºåºï¼‰
+cl_int clSetCommandQueueProperty ( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_command_queue_properties é˜Ÿåˆ—å±æ€§, cl_bool èƒ½å¦, cl_command_queue_properties* ä¹‹å‰çš„å±æ€§);
+	//ä½¿èƒ½æˆ–ç¦æ­¢å‘½ä»¤é˜Ÿåˆ—çš„å±æ€§
+	//èƒ½å¦ï¼š
+		CL_TRUEï¼šå…è®¸
+		CL_FALSEï¼šç¦æ­¢
 ```
-### 3.»º³å¶ÔÏó
-ÒÔÊı×éĞÎÊ½¶ÁĞ´ÄÚ´æ
+### 3.ç¼“å†²å¯¹è±¡
+ä»¥æ•°ç»„å½¢å¼è¯»å†™å†…å­˜
 ```		
-cl_mem ÄÚ´æ¿Õ¼ä = clCreateBuffer( cl_context ÉÏÏÂÎÄ, cl_mem_flags ¶ÁĞ´×´Ì¬, size_t ÄÚ´æ´óĞ¡, void* host_ptr, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//ÎªÉè±¸·ÖÅäÄÚ´æ»º³åÇø
-cl_int µ÷ÓÃ×´Ì¬ = clEnqueueWriteBuffer( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ÄÚ´æ¿Õ¼ä, cl_bool ×èÈû×´Ì¬, size_t Æ«ÒÆÁ¿, size_t ÄÚ´æ´óĞ¡, const void* Ğ´Êı×éÃûÖ¸Õë, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_event* event);
-	//½«Ö÷»ú¶ËÊı¾İ´«ÈëÉè±¸ÄÚ´æÖĞ
-cl_int µ÷ÓÃ×´Ì¬ = clEnqueueReadBuffer( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ÄÚ´æ¿Õ¼ä, cl_bool ×èÈû×´Ì¬, size_t Æ«ÒÆÁ¿, size_t ÄÚ´æ´óĞ¡, const void* ¶ÁÊı×éÃûÖ¸Õë, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_event* event);
-	//½«Éè±¸ÄÚ´æÖĞÊı¾İ´«»ØÖ÷»ú¶Ë
-cl_int clEnqueueCopyBuffer (cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ¾ÉÄÚ´æ¿Õ¼ä, cl_mem ĞÂÄÚ´æ¿Õ¼ä, size_t ¾ÉÆ«ÒÆÁ¿, size_t ĞÂÆ«ÒÆÁ¿, size_t ÄÚ´æ´óĞ¡, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
-	//½«¾ÉÄÚ´æ¿Õ¼ä¿½±´µ½ĞÂÄÚ´æ¿Õ¼äÖĞ
+cl_mem å†…å­˜ç©ºé—´ = clCreateBuffer( cl_context ä¸Šä¸‹æ–‡, cl_mem_flags è¯»å†™çŠ¶æ€, size_t å†…å­˜å¤§å°, void* host_ptr, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//ä¸ºè®¾å¤‡åˆ†é…å†…å­˜ç¼“å†²åŒº
+cl_int è°ƒç”¨çŠ¶æ€ = clEnqueueWriteBuffer( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem å†…å­˜ç©ºé—´, cl_bool é˜»å¡çŠ¶æ€, size_t åç§»é‡, size_t å†…å­˜å¤§å°, const void* å†™æ•°ç»„åæŒ‡é’ˆ, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_event* event);
+	//å°†ä¸»æœºç«¯æ•°æ®ä¼ å…¥è®¾å¤‡å†…å­˜ä¸­
+cl_int è°ƒç”¨çŠ¶æ€ = clEnqueueReadBuffer( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem å†…å­˜ç©ºé—´, cl_bool é˜»å¡çŠ¶æ€, size_t åç§»é‡, size_t å†…å­˜å¤§å°, const void* è¯»æ•°ç»„åæŒ‡é’ˆ, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_event* event);
+	//å°†è®¾å¤‡å†…å­˜ä¸­æ•°æ®ä¼ å›ä¸»æœºç«¯
+cl_int clEnqueueCopyBuffer (cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem æ—§å†…å­˜ç©ºé—´, cl_mem æ–°å†…å­˜ç©ºé—´, size_t æ—§åç§»é‡, size_t æ–°åç§»é‡, size_t å†…å­˜å¤§å°, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
+	//å°†æ—§å†…å­˜ç©ºé—´æ‹·è´åˆ°æ–°å†…å­˜ç©ºé—´ä¸­
 ```
-ÒÔimagĞÎÊ½¶ÁĞ´ÄÚ´æ
+ä»¥imagå½¢å¼è¯»å†™å†…å­˜
 ```		
-cl_mem clCreateImage2D( cl_context ÉÏÏÂÎÄ, cl_mem_flags ¶ÁĞ´×´Ì¬, const cl_image_format* Í¼Ïñ¸ñÊ½ÃèÊö·û, size_t Í¼Ïñ¿í, size_t Í¼Ïñ¸ß, size_t Ò»Î¬¿íÇĞÆ¬×Ö½ÚÊı, void* Ó¦ÓÃÒÑ·ÖÅäÍ¼ÏñÊı¾İ, cl_int* (&µ÷ÓÃ×´Ì¬));
-cl_mem clCreateImage3D( cl_context ÉÏÏÂÎÄ, cl_mem_flags ¶ÁĞ´×´Ì¬, const cl_image_format* Í¼Ïñ¸ñÊ½ÃèÊö·û, size_t Í¼Ïñ¿í, size_t Í¼Ïñ¸ß, size_t Í¼ÏñÉî, size_t Ò»Î¬¿íÇĞÆ¬×Ö½ÚÊı, size_t ¶şÎ¬¿í¸ßÇĞÆ¬µÄ×Ö½ÚÊı, void* Ó¦ÓÃÒÑ·ÖÅäÍ¼ÏñÊı¾İ, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//´´½¨Í¼Ïñ¶ÔÏó
+cl_mem clCreateImage2D( cl_context ä¸Šä¸‹æ–‡, cl_mem_flags è¯»å†™çŠ¶æ€, const cl_image_format* å›¾åƒæ ¼å¼æè¿°ç¬¦, size_t å›¾åƒå®½, size_t å›¾åƒé«˜, size_t ä¸€ç»´å®½åˆ‡ç‰‡å­—èŠ‚æ•°, void* åº”ç”¨å·²åˆ†é…å›¾åƒæ•°æ®, cl_int* (&è°ƒç”¨çŠ¶æ€));
+cl_mem clCreateImage3D( cl_context ä¸Šä¸‹æ–‡, cl_mem_flags è¯»å†™çŠ¶æ€, const cl_image_format* å›¾åƒæ ¼å¼æè¿°ç¬¦, size_t å›¾åƒå®½, size_t å›¾åƒé«˜, size_t å›¾åƒæ·±, size_t ä¸€ç»´å®½åˆ‡ç‰‡å­—èŠ‚æ•°, size_t äºŒç»´å®½é«˜åˆ‡ç‰‡çš„å­—èŠ‚æ•°, void* åº”ç”¨å·²åˆ†é…å›¾åƒæ•°æ®, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//åˆ›å»ºå›¾åƒå¯¹è±¡
 typedef struct _cl_image_format {
-	cl_channel_order Í¨µÀÊıÄ¿ºÍ²¼¾Ö;
-	cl_channel_type Í¨µÀÊı¾İÀàĞÍ´óĞ¡;}	
-cl_int clEnqueueWriteImage( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem Í¼Ïñ¿Õ¼ä, cl_bool ×èÈû×´Ì¬, const size_t Æ«ÒÆÁ¿[3], const size_t ÈıÎ¬±ß³¤[3], size_t row_pitch, size_t slice_pitch, void* Ö÷»úÄÚ´æ, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
-	//½«Ö÷»ú¶ËÊı¾İ´«ÈëÉè±¸ÄÚ´æÖĞ
-cl_int clEnqueueReadImage( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem Í¼Ïñ¿Õ¼ä, cl_bool ×èÈû×´Ì¬, const size_t Æ«ÒÆÁ¿[3], const size_t ÈıÎ¬±ß³¤[3], size_t row_pitch, size_t slice_pitch, void* Ö÷»úÄÚ´æ, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
-	//½«Éè±¸ÄÚ´æÖĞÊı¾İ´«»ØÖ÷»ú¶Ë
-cl_int clEnqueueCopyImage (cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ¾ÉÍ¼Ïñ¿Õ¼ä, cl_mem ĞÂÍ¼Ïñ¿Õ¼ä, const size_t ¾ÉÆ«ÒÆÁ¿[3], const size_t ĞÂÆ«ÒÆÁ¿[3], const size_t ÈıÎ¬±ß³¤[3], cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
-	//½«¾ÉÍ¼Ïñ¿Õ¼ä¿½±´µ½ĞÂÍ¼Ïñ¿Õ¼äÖĞ
+	cl_channel_order é€šé“æ•°ç›®å’Œå¸ƒå±€;
+	cl_channel_type é€šé“æ•°æ®ç±»å‹å¤§å°;}	
+cl_int clEnqueueWriteImage( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem å›¾åƒç©ºé—´, cl_bool é˜»å¡çŠ¶æ€, const size_t åç§»é‡[3], const size_t ä¸‰ç»´è¾¹é•¿[3], size_t row_pitch, size_t slice_pitch, void* ä¸»æœºå†…å­˜, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
+	//å°†ä¸»æœºç«¯æ•°æ®ä¼ å…¥è®¾å¤‡å†…å­˜ä¸­
+cl_int clEnqueueReadImage( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem å›¾åƒç©ºé—´, cl_bool é˜»å¡çŠ¶æ€, const size_t åç§»é‡[3], const size_t ä¸‰ç»´è¾¹é•¿[3], size_t row_pitch, size_t slice_pitch, void* ä¸»æœºå†…å­˜, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
+	//å°†è®¾å¤‡å†…å­˜ä¸­æ•°æ®ä¼ å›ä¸»æœºç«¯
+cl_int clEnqueueCopyImage (cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem æ—§å›¾åƒç©ºé—´, cl_mem æ–°å›¾åƒç©ºé—´, const size_t æ—§åç§»é‡[3], const size_t æ–°åç§»é‡[3], const size_t ä¸‰ç»´è¾¹é•¿[3], cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
+	//å°†æ—§å›¾åƒç©ºé—´æ‹·è´åˆ°æ–°å›¾åƒç©ºé—´ä¸­
 ```	
 ```
-cl_int clEnqueueCopyImageToBuffer( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ¾ÉÍ¼Ïñ¿Õ¼ä, cl_mem ĞÂÄÚ´æ¿Õ¼ä, const size_t ¾ÉÆ«ÒÆÁ¿[3], const size_t ¾ÉÈıÎ¬±ß³¤[3], size_t ĞÂÆ«ÒÆÁ¿, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
-	//½«Í¼Ïñ¿Õ¼ä¿½±´µ½ÄÚ´æ¿Õ¼äÖĞ
-cl_int clEnqueueCopyBufferToImage( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ¾ÉÄÚ´æ¿Õ¼ä, cl_mem ĞÂÍ¼Ïñ¿Õ¼ä, size_t ¾ÉÆ«ÒÆÁ¿, const size_t ĞÂÆ«ÒÆÁ¿[3], const size_t ĞÂÈıÎ¬±ß³¤[3], cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
-	//½«ÄÚ´æ¿Õ¼ä¿½±´µ½Í¼Ïñ¿Õ¼äÖĞ	
+cl_int clEnqueueCopyImageToBuffer( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem æ—§å›¾åƒç©ºé—´, cl_mem æ–°å†…å­˜ç©ºé—´, const size_t æ—§åç§»é‡[3], const size_t æ—§ä¸‰ç»´è¾¹é•¿[3], size_t æ–°åç§»é‡, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
+	//å°†å›¾åƒç©ºé—´æ‹·è´åˆ°å†…å­˜ç©ºé—´ä¸­
+cl_int clEnqueueCopyBufferToImage( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem æ—§å†…å­˜ç©ºé—´, cl_mem æ–°å›¾åƒç©ºé—´, size_t æ—§åç§»é‡, const size_t æ–°åç§»é‡[3], const size_t æ–°ä¸‰ç»´è¾¹é•¿[3], cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
+	//å°†å†…å­˜ç©ºé—´æ‹·è´åˆ°å›¾åƒç©ºé—´ä¸­	
 ```
 ```	
-void* Ö÷»úµØÖ· = clEnqueueMapBuffer( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ÄÚ´æ¿Õ¼ä, cl_bool ×èÈû×´Ì¬, cl_map_flags MAP¶ÁĞ´×´Ì¬, size_t Æ«ÒÆÁ¿, size_t ÄÚ´æ´óĞ¡, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//½«ÄÚ´æ¿Õ¼äµÄÄ³¸öÇøÓòÓ³Éäµ½Ö÷»úµØÖ·¿Õ¼äÖĞ£¬²¢·µ»ØÒ»¸öÖ¸ÏòÓ³ÉäÇøÓòµÄÖ¸Õë
-void* Ö÷»úµØÖ· = clEnqueueMapImage( cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem Í¼Ïñ¿Õ¼ä, cl_bool ×èÈû×´Ì¬, cl_map_flags MAP¶ÁĞ´×´Ì¬, const size_t Æ«ÒÆÁ¿[3], const size_t ÈıÎ¬±ß³¤[3], size_t*(&Ò»Î¬¿íÇĞÆ¬×Ö½ÚÊı), size_t*(&¶şÎ¬¿í¸ßÇĞÆ¬µÄ×Ö½ÚÊı), cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event, cl_int *errcode_ret);
-	//½«Í¼Ïñ¿Õ¼äµÄÄ³¸öÇøÓòÓ³Éäµ½Ö÷»úµØÖ·¿Õ¼äÖĞ£¬²¢·µ»ØÒ»¸öÖ¸ÏòÓ³ÉäÇøÓòµÄÖ¸Õë
-cl_int clEnqueueUnmapMemObject (cl_command_queue ÃüÁî¶ÓÁĞ, cl_mem ÄÚ´æ/Í¼Ïñ¿Õ¼ä, void* Ö÷»úµØÖ·, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
-	//¶ÔÖ®Ç°ËùÓ³ÉäµÄÄÚ´æ¶ÔÏóÇøÓò½øĞĞ½âÓ³Éä	
+void* ä¸»æœºåœ°å€ = clEnqueueMapBuffer( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem å†…å­˜ç©ºé—´, cl_bool é˜»å¡çŠ¶æ€, cl_map_flags MAPè¯»å†™çŠ¶æ€, size_t åç§»é‡, size_t å†…å­˜å¤§å°, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//å°†å†…å­˜ç©ºé—´çš„æŸä¸ªåŒºåŸŸæ˜ å°„åˆ°ä¸»æœºåœ°å€ç©ºé—´ä¸­ï¼Œå¹¶è¿”å›ä¸€ä¸ªæŒ‡å‘æ˜ å°„åŒºåŸŸçš„æŒ‡é’ˆ
+void* ä¸»æœºåœ°å€ = clEnqueueMapImage( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem å›¾åƒç©ºé—´, cl_bool é˜»å¡çŠ¶æ€, cl_map_flags MAPè¯»å†™çŠ¶æ€, const size_t åç§»é‡[3], const size_t ä¸‰ç»´è¾¹é•¿[3], size_t*(&ä¸€ç»´å®½åˆ‡ç‰‡å­—èŠ‚æ•°), size_t*(&äºŒç»´å®½é«˜åˆ‡ç‰‡çš„å­—èŠ‚æ•°), cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event, cl_int *errcode_ret);
+	//å°†å›¾åƒç©ºé—´çš„æŸä¸ªåŒºåŸŸæ˜ å°„åˆ°ä¸»æœºåœ°å€ç©ºé—´ä¸­ï¼Œå¹¶è¿”å›ä¸€ä¸ªæŒ‡å‘æ˜ å°„åŒºåŸŸçš„æŒ‡é’ˆ
+cl_int clEnqueueUnmapMemObject (cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_mem å†…å­˜/å›¾åƒç©ºé—´, void* ä¸»æœºåœ°å€, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event);
+	//å¯¹ä¹‹å‰æ‰€æ˜ å°„çš„å†…å­˜å¯¹è±¡åŒºåŸŸè¿›è¡Œè§£æ˜ å°„	
 ```
-¶ÁĞ´×´Ì¬£º
+è¯»å†™çŠ¶æ€ï¼š
 ```
-	CL_MEM_READ_ONLY£ºÖ»¶Á
-	CL_MEM_WRITE_ONLY£ºÖ»Ğ´
-	CL_MEM_READ_WRITE£º¶ÁĞ´
-	CL_MEM_USE_HOST_PTR£º
-	CL_MEM_ALLOC_HOST_PTR£º
-	CL_MEM_COPY_HOST_PTR£º´Óhost_ptr´¦¿½±´Êı¾İ
+	CL_MEM_READ_ONLYï¼šåªè¯»
+	CL_MEM_WRITE_ONLYï¼šåªå†™
+	CL_MEM_READ_WRITEï¼šè¯»å†™
+	CL_MEM_USE_HOST_PTRï¼š
+	CL_MEM_ALLOC_HOST_PTRï¼š
+	CL_MEM_COPY_HOST_PTRï¼šä»host_ptrå¤„æ‹·è´æ•°æ®
 ```
-Èç¹ûÔÚ´´½¨»º³å¶ÔÏó»òÍ¼Ïñ¶ÔÏóÊ±£¬mem_flagsÖĞÉèÖÃÁËCL_MEM_USE_HOST_PTR£¬¾Í»á£º	
-µ±clEnqueueMapBuffer»òclEnqueueMapImageµÄÃüÁîÍê³ÉÊ±£¬±£Ö¤clCreateBuffer»òclCreateImage{2D|3D}ÖĞµÄhost_ptrº¬ÓĞËùÓ³ÉäÇøÓòµÄ×îĞÂÄÚÈİ¡£		
+å¦‚æœåœ¨åˆ›å»ºç¼“å†²å¯¹è±¡æˆ–å›¾åƒå¯¹è±¡æ—¶ï¼Œmem_flagsä¸­è®¾ç½®äº†CL_MEM_USE_HOST_PTRï¼Œå°±ä¼šï¼š	
+å½“clEnqueueMapBufferæˆ–clEnqueueMapImageçš„å‘½ä»¤å®Œæˆæ—¶ï¼Œä¿è¯clCreateBufferæˆ–clCreateImage{2D|3D}ä¸­çš„host_ptrå«æœ‰æ‰€æ˜ å°„åŒºåŸŸçš„æœ€æ–°å†…å®¹ã€‚		
 
-MAP¶ÁĞ´×´Ì¬£ºCL_MAP_READ »ò CL_MAP_WRITE    
-ÄÚ´æ´óĞ¡ ÒÔ×Ö½ÚÎªµ¥Î»    
-Í¼Ïñ¿í¡¢Í¼Ïñ¸ßµ¥Î»ÎªÏñËØ    
-¶ÁĞ´Æ«ÒÆÁ¿ ºÍ ÈıÎ¬±ß³¤ ÒÔÏñËØÎªµ¥Î»	    
+MAPè¯»å†™çŠ¶æ€ï¼šCL_MAP_READ æˆ– CL_MAP_WRITE    
+å†…å­˜å¤§å° ä»¥å­—èŠ‚ä¸ºå•ä½    
+å›¾åƒå®½ã€å›¾åƒé«˜å•ä½ä¸ºåƒç´     
+è¯»å†™åç§»é‡ å’Œ ä¸‰ç»´è¾¹é•¿ ä»¥åƒç´ ä¸ºå•ä½	    
 
-×èÈû×´Ì¬£º    
-	CL_TRUE£º×èÈûclEnqueueWriteBufferº¯Êı·µ»ØÖ±µ½Ğ´²Ù×÷Íê³É    
-	CL_FALSE£ºÔÊĞíclEnqueueWriteBufferº¯Êı·µ»ØÏÈÓÚĞ´²Ù×÷Íê³É    
+é˜»å¡çŠ¶æ€ï¼š    
+	CL_TRUEï¼šé˜»å¡clEnqueueWriteBufferå‡½æ•°è¿”å›ç›´åˆ°å†™æ“ä½œå®Œæˆ    
+	CL_FALSEï¼šå…è®¸clEnqueueWriteBufferå‡½æ•°è¿”å›å…ˆäºå†™æ“ä½œå®Œæˆ    
 	
-event_wait_listºÍnum_events_in_wait_listÖ¸¶¨ÔÚÖ´ĞĞ´ËÃüÁîÇ°±ØĞëÍê³ÉµÄÊÂ¼ş£¬event·µ»ØÒ»¸öÊÂ¼ş¶ÔÏóÓÃÀ´±êÊ¶´Ë¶ÁĞ´ÃüÁî£¬Ò²¿ÉÒÔÓÃÀ´²éÑ¯»òµÈ´ı´ËÃüÁîµÄÍê³É
+event_wait_listå’Œnum_events_in_wait_listæŒ‡å®šåœ¨æ‰§è¡Œæ­¤å‘½ä»¤å‰å¿…é¡»å®Œæˆçš„äº‹ä»¶ï¼Œeventè¿”å›ä¸€ä¸ªäº‹ä»¶å¯¹è±¡ç”¨æ¥æ ‡è¯†æ­¤è¯»å†™å‘½ä»¤ï¼Œä¹Ÿå¯ä»¥ç”¨æ¥æŸ¥è¯¢æˆ–ç­‰å¾…æ­¤å‘½ä»¤çš„å®Œæˆ
 	
-### 4.ÄÚ´æÄ£ĞÍ
+### 4.å†…å­˜æ¨¡å‹
     
-È«¾ÖÄÚ´æ£º__global£¬Éè±¸ÖĞËùÓĞ¼ÆËãµ¥Î»¹²Ïí    
-³£Á¿ÄÚ´æ£º__constant£¬Éè±¸ÖĞËùÓĞ¼ÆËãµ¥Î»¹²Ïí    
-±¾µØÄÚ´æ£º__local£¬workgroup¹²Ïí    
-Ë½ÓĞÄÚ´æ£º__private£¬Ö»¶Ôµ¥¸öwork-item¿É¼û    
+å…¨å±€å†…å­˜ï¼š__globalï¼Œè®¾å¤‡ä¸­æ‰€æœ‰è®¡ç®—å•ä½å…±äº«    
+å¸¸é‡å†…å­˜ï¼š__constantï¼Œè®¾å¤‡ä¸­æ‰€æœ‰è®¡ç®—å•ä½å…±äº«    
+æœ¬åœ°å†…å­˜ï¼š__localï¼Œworkgroupå…±äº«    
+ç§æœ‰å†…å­˜ï¼š__privateï¼Œåªå¯¹å•ä¸ªwork-itemå¯è§    
 
 ```
-const char* ºË´úÂë = {
+const char* æ ¸ä»£ç  = {
     "__kernel				",
-    "void ºËº¯ÊıÃû( __global ĞÎ²Î){}	"}
-//»ò
-const char* ºË´úÂëÎÄ¼şÂ·¾¶ = shrFindFilePath( "ºËº¯ÊıÎÄ¼şÃû.cl", NULL);
-const char* ºË´úÂë = oclLoadProgSource( ºË´úÂëÎÄ¼şÂ·¾¶, "", &ÎÄ¼ş³¤¶È);
+    "void æ ¸å‡½æ•°å( __global å½¢å‚){}	"}
+//æˆ–
+const char* æ ¸ä»£ç æ–‡ä»¶è·¯å¾„ = shrFindFilePath( "æ ¸å‡½æ•°æ–‡ä»¶å.cl", NULL);
+const char* æ ¸ä»£ç  = oclLoadProgSource( æ ¸ä»£ç æ–‡ä»¶è·¯å¾„, "", &æ–‡ä»¶é•¿åº¦);
 ```
 ```
-get_work_dim();			//·µ»ØÏß³Ìµ÷¶ÈµÄÎ¬Êı
-get_num_groups(µÚ¼¸Î¬);		//·µ»Ø¸ÃÎ¬ÉÏÈ«¾ÖÖĞwork-groupµÄÊıÄ¿
-get_global_size(µÚ¼¸Î¬);	//·µ»Ø¸ÃÎ¬ÉÏÈ«¾ÖÖĞwork-itemµÄÊıÄ¿
-get_local_size(µÚ¼¸Î¬);		//·µ»Ø¸ÃÎ¬ÉÏwork-groupÖĞwork-itemµÄÊıÄ¿
-get_group_id(µÚ¼¸Î¬);		//·µ»Ø¸ÃÎ¬ÉÏµ±Ç°work-groupÔÚÈ«¾ÖÖĞµÄË÷Òı
-get_global_id(µÚ¼¸Î¬);		//·µ»Ø¸ÃÎ¬ÉÏµ±Ç°work-itemÔÚÈ«¾ÖÖĞµÄË÷Òı
-get_local_id(µÚ¼¸Î¬);		//·µ»Ø¸ÃÎ¬ÉÏµ±Ç°work-itemÔÚwork-groupÖĞµÄË÷Òı
+get_work_dim();			//è¿”å›çº¿ç¨‹è°ƒåº¦çš„ç»´æ•°
+get_num_groups(ç¬¬å‡ ç»´);		//è¿”å›è¯¥ç»´ä¸Šå…¨å±€ä¸­work-groupçš„æ•°ç›®
+get_global_size(ç¬¬å‡ ç»´);	//è¿”å›è¯¥ç»´ä¸Šå…¨å±€ä¸­work-itemçš„æ•°ç›®
+get_local_size(ç¬¬å‡ ç»´);		//è¿”å›è¯¥ç»´ä¸Šwork-groupä¸­work-itemçš„æ•°ç›®
+get_group_id(ç¬¬å‡ ç»´);		//è¿”å›è¯¥ç»´ä¸Šå½“å‰work-groupåœ¨å…¨å±€ä¸­çš„ç´¢å¼•
+get_global_id(ç¬¬å‡ ç»´);		//è¿”å›è¯¥ç»´ä¸Šå½“å‰work-itemåœ¨å…¨å±€ä¸­çš„ç´¢å¼•
+get_local_id(ç¬¬å‡ ç»´);		//è¿”å›è¯¥ç»´ä¸Šå½“å‰work-itemåœ¨work-groupä¸­çš„ç´¢å¼•
 ```
 
-### 5.Ö´ĞĞº¯Êı
+### 5.æ‰§è¡Œå‡½æ•°
 ```
-cl_program ºË´úÂë¶ÔÏó = clCreateProgramWithSource( cl_context ÉÏÏÂÎÄ, cl_uint ºË´úÂë´®ÊıÁ¿, (const char**)&ºË´úÂë, const size_t* ºË´úÂë´®³¤¶È, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//Éú³ÉÏà¹Ø´úÂë
-//»ò
-cl_program ºË´úÂë¶ÔÏó = clCreateProgramWithBinary( cl_context ÉÏÏÂÎÄ, cl_uint Éè±¸ÊıÄ¿, const cl_device_id* Éè±¸ÁĞ±í, const size_t* ¶ş½øÖÆ´úÂë³¤¶È, const unsigned char **Ã¿¸öÉè±¸ÖĞ¶ş½øÖÆ´úÂë, cl_int* Éè±¸×°ÔØµ÷ÓÃ×´Ì¬ÁĞ±í, cl_int* (&µ÷ÓÃ×´Ì¬));
-	//Éú³ÉÏà¹Ø¶ş½øÖÆ´úÂë
-```
-```	
-cl_int µ÷ÓÃ×´Ì¬ = clBuildProgram( cl_program ºË´úÂë¶ÔÏó, cl_uint Éè±¸ÊıÄ¿, const cl_device_id* Éè±¸ÁĞ±í, const char* ±àÒëÑ¡Ïî, void (*»Øµ÷º¯Êı), void* »Øµ÷º¯ÊıÊµ²Î);
-	//±àÒëÉè±¸ÖĞµÄ´úÂë£¨ÔËĞĞ½×¶Î±àÒë£©	
-	//void (*»Øµ÷º¯Êı)(cl_program, void* »Øµ÷º¯ÊıĞÎ²Î)
+cl_program æ ¸ä»£ç å¯¹è±¡ = clCreateProgramWithSource( cl_context ä¸Šä¸‹æ–‡, cl_uint æ ¸ä»£ç ä¸²æ•°é‡, (const char**)&æ ¸ä»£ç , const size_t* æ ¸ä»£ç ä¸²é•¿åº¦, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//ç”Ÿæˆç›¸å…³ä»£ç 
+//æˆ–
+cl_program æ ¸ä»£ç å¯¹è±¡ = clCreateProgramWithBinary( cl_context ä¸Šä¸‹æ–‡, cl_uint è®¾å¤‡æ•°ç›®, const cl_device_id* è®¾å¤‡åˆ—è¡¨, const size_t* äºŒè¿›åˆ¶ä»£ç é•¿åº¦, const unsigned char **æ¯ä¸ªè®¾å¤‡ä¸­äºŒè¿›åˆ¶ä»£ç , cl_int* è®¾å¤‡è£…è½½è°ƒç”¨çŠ¶æ€åˆ—è¡¨, cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//ç”Ÿæˆç›¸å…³äºŒè¿›åˆ¶ä»£ç 
 ```
 ```	
-cl_kernel ºË¶ÔÏó = clCreateKernel( cl_program ºË´úÂë¶ÔÏó, const char* "ºËº¯ÊıÃû", cl_int* (&µ÷ÓÃ×´Ì¬));
-	//ÌáÈ¡´úÂëÈë¿Úµã
-//»ò
-cl_int clCreateKernelsInProgram( cl_program ºË´úÂë¶ÔÏó, cl_uint ºË¶ÔÏóÊıÄ¿, cl_kernel* ºË¶ÔÏóÁĞ±í, cl_uint* ºË´úÂë¶ÔÏóÖĞºË¶ÔÏóÊıÄ¿);
-	//Îª program ÖĞËùÓĞºËº¯Êı´´½¨ºË¶ÔÏó
+cl_int è°ƒç”¨çŠ¶æ€ = clBuildProgram( cl_program æ ¸ä»£ç å¯¹è±¡, cl_uint è®¾å¤‡æ•°ç›®, const cl_device_id* è®¾å¤‡åˆ—è¡¨, const char* ç¼–è¯‘é€‰é¡¹, void (*å›è°ƒå‡½æ•°), void* å›è°ƒå‡½æ•°å®å‚);
+	//ç¼–è¯‘è®¾å¤‡ä¸­çš„ä»£ç ï¼ˆè¿è¡Œé˜¶æ®µç¼–è¯‘ï¼‰	
+	//void (*å›è°ƒå‡½æ•°)(cl_program, void* å›è°ƒå‡½æ•°å½¢å‚)
 ```
 ```	
-cl_int µ÷ÓÃ×´Ì¬ = clSetKernelArg( cl_kernel ºË¶ÔÏó, µÚ¼¸¸ö²ÎÊı, ²ÎÊı´óĞ¡, Êµ²ÎÖ¸Õë);
-	//´«ÈëÊµ²Î
+cl_kernel æ ¸å¯¹è±¡ = clCreateKernel( cl_program æ ¸ä»£ç å¯¹è±¡, const char* "æ ¸å‡½æ•°å", cl_int* (&è°ƒç”¨çŠ¶æ€));
+	//æå–ä»£ç å…¥å£ç‚¹
+//æˆ–
+cl_int clCreateKernelsInProgram( cl_program æ ¸ä»£ç å¯¹è±¡, cl_uint æ ¸å¯¹è±¡æ•°ç›®, cl_kernel* æ ¸å¯¹è±¡åˆ—è¡¨, cl_uint* æ ¸ä»£ç å¯¹è±¡ä¸­æ ¸å¯¹è±¡æ•°ç›®);
+	//ä¸º program ä¸­æ‰€æœ‰æ ¸å‡½æ•°åˆ›å»ºæ ¸å¯¹è±¡
 ```
 ```	
-cl_int µ÷ÓÃ×´Ì¬ = clEnqueueNDRangeKernel( cl_command_queue ÃüÁî¶ÓÁĞ, cl_kernel ºË¶ÔÏó, cl_uint ĞÂ½¨work-itemµÄÎ¬¶È, const size_t* work-itemµÄÈ«¾ÖID, const size_t* NDRangeÖĞÃ¿Î¬work-itemÊıÁ¿, const size_t* workgroupÖĞÃ¿Î¬work-itemµÄÊıÁ¿, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_int* event);
-	//ÇëÇóÔÚÉè±¸ÉÏÖ´ĞĞºË¶ÔÏó
-//»ò
-cl_int clEnqueueTask( cl_command_queue ÃüÁî¶ÓÁĞ, cl_kernel ºË¶ÔÏó, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_int* event);
-	//ÇëÇóÔÚÉè±¸ÉÏÖ´ĞĞºË¶ÔÏó¡£ºË¶ÔÏóÔÚÖ´ĞĞÊ±½öÊ¹ÓÃµ¥¸ö¹¤×÷Ïî
-//»ò
-cl_int clEnqueueNativeKernel (cl_command_queue ÃüÁî¶ÓÁĞ, void (*¿É±»Ö÷»úµ÷ÓÃµÄº¯Êı)(void *), void* µ÷ÓÃÖ÷»úº¯ÊıÊ±ËùÓÃµÄÊµ²ÎÁĞ±í,  size_t Ö÷»úº¯Êı²ÎÊı¸öÊı, cl_uint Ö÷»úº¯ÊıËù´«µİµÄ»º³å¶ÔÏóµÄÊıÄ¿, const cl_mem* Ö÷»úº¯ÊıËù´«µİµÄ»º³å¶ÔÏó, const void** Ö÷»úº¯Êı²ÎÊı´æ´¢ÄÚ´æ¶ÔÏó¾ä±úµÄÎ»ÖÃ, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_int* event);
-	//Ö´ĞĞÒ»¸öÔ­ÉúµÄ£¨²»ÊÇÓÃ OpenCL ±àÒëÆ÷±àÒëµÄ£©C/C++º¯Êı
-	//Éè±¸µÄ CL_DEVICE_EXECUTON_CAPABILITIES ÖĞ±ØĞëÉèÖÃÁË CL_EXEC_NATIVE_KERNEL
+cl_int è°ƒç”¨çŠ¶æ€ = clSetKernelArg( cl_kernel æ ¸å¯¹è±¡, ç¬¬å‡ ä¸ªå‚æ•°, å‚æ•°å¤§å°, å®å‚æŒ‡é’ˆ);
+	//ä¼ å…¥å®å‚
 ```
 ```	
-cl_int µ÷ÓÃ×´Ì¬ = clFlush( cl_command_queue ÃüÁî¶ÓÁĞ);
-	//×èÈûÖ±µ½ÃüÁî¶ÓÁĞÖĞËùÓĞÃüÁî±»ÒÆ³ö¶ÓÁĞ£¬Î´±ØÖ´ĞĞÍê±Ï
-cl_int µ÷ÓÃ×´Ì¬ = clFinish( cl_command_queue ÃüÁî¶ÓÁĞ); 
-	//×èÈûÖÁÃüÁî¶ÓÁĞÖĞµÄËùÓĞÃüÁîÍê³É
+cl_int è°ƒç”¨çŠ¶æ€ = clEnqueueNDRangeKernel( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_kernel æ ¸å¯¹è±¡, cl_uint æ–°å»ºwork-itemçš„ç»´åº¦, const size_t* work-itemçš„å…¨å±€ID, const size_t* NDRangeä¸­æ¯ç»´work-itemæ•°é‡, const size_t* workgroupä¸­æ¯ç»´work-itemçš„æ•°é‡, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_int* event);
+	//è¯·æ±‚åœ¨è®¾å¤‡ä¸Šæ‰§è¡Œæ ¸å¯¹è±¡
+//æˆ–
+cl_int clEnqueueTask( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_kernel æ ¸å¯¹è±¡, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_int* event);
+	//è¯·æ±‚åœ¨è®¾å¤‡ä¸Šæ‰§è¡Œæ ¸å¯¹è±¡ã€‚æ ¸å¯¹è±¡åœ¨æ‰§è¡Œæ—¶ä»…ä½¿ç”¨å•ä¸ªå·¥ä½œé¡¹
+//æˆ–
+cl_int clEnqueueNativeKernel (cl_command_queue å‘½ä»¤é˜Ÿåˆ—, void (*å¯è¢«ä¸»æœºè°ƒç”¨çš„å‡½æ•°)(void *), void* è°ƒç”¨ä¸»æœºå‡½æ•°æ—¶æ‰€ç”¨çš„å®å‚åˆ—è¡¨,  size_t ä¸»æœºå‡½æ•°å‚æ•°ä¸ªæ•°, cl_uint ä¸»æœºå‡½æ•°æ‰€ä¼ é€’çš„ç¼“å†²å¯¹è±¡çš„æ•°ç›®, const cl_mem* ä¸»æœºå‡½æ•°æ‰€ä¼ é€’çš„ç¼“å†²å¯¹è±¡, const void** ä¸»æœºå‡½æ•°å‚æ•°å­˜å‚¨å†…å­˜å¯¹è±¡å¥æŸ„çš„ä½ç½®, cl_uint num_events_in_wait_list, const cl_event* event_wait_list, cl_int* event);
+	//æ‰§è¡Œä¸€ä¸ªåŸç”Ÿçš„ï¼ˆä¸æ˜¯ç”¨ OpenCL ç¼–è¯‘å™¨ç¼–è¯‘çš„ï¼‰C/C++å‡½æ•°
+	//è®¾å¤‡çš„ CL_DEVICE_EXECUTON_CAPABILITIES ä¸­å¿…é¡»è®¾ç½®äº† CL_EXEC_NATIVE_KERNEL
+```
+```	
+cl_int è°ƒç”¨çŠ¶æ€ = clFlush( cl_command_queue å‘½ä»¤é˜Ÿåˆ—);
+	//é˜»å¡ç›´åˆ°å‘½ä»¤é˜Ÿåˆ—ä¸­æ‰€æœ‰å‘½ä»¤è¢«ç§»å‡ºé˜Ÿåˆ—ï¼Œæœªå¿…æ‰§è¡Œå®Œæ¯•
+cl_int è°ƒç”¨çŠ¶æ€ = clFinish( cl_command_queue å‘½ä»¤é˜Ÿåˆ—); 
+	//é˜»å¡è‡³å‘½ä»¤é˜Ÿåˆ—ä¸­çš„æ‰€æœ‰å‘½ä»¤å®Œæˆ
 ```
 	
-### 6.²é¿´¹ı³ÌĞÅÏ¢
+### 6.æŸ¥çœ‹è¿‡ç¨‹ä¿¡æ¯
 
-²éÑ¯µÄÍ¨ÓÃÓÃ·¨Ê¾Àı£º
+æŸ¥è¯¢çš„é€šç”¨ç”¨æ³•ç¤ºä¾‹ï¼š
 ```
-cl_int clGetProgramBuildInfo( cl_program ºË´úÂë¶ÔÏó, cl_device_id Éè±¸ÁĞ±í[0], cl_program_build_info ²ÎÊıÃû, 0, NULL, size_t* (&²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı));
-char* ²éÑ¯·µ»ØÖµ = new char[²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı+1];
-cl_int clGetProgramBuildInfo( cl_program ºË´úÂë¶ÔÏó, cl_device_id Éè±¸ÁĞ±í[0], cl_program_build_info ²ÎÊıÃû, size_t ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, NULL);
-²éÑ¯·µ»ØÖµ[²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı] = "\0";
+cl_int clGetProgramBuildInfo( cl_program æ ¸ä»£ç å¯¹è±¡, cl_device_id è®¾å¤‡åˆ—è¡¨[0], cl_program_build_info å‚æ•°å, 0, NULL, size_t* (&æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°));
+char* æŸ¥è¯¢è¿”å›å€¼ = new char[æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°+1];
+cl_int clGetProgramBuildInfo( cl_program æ ¸ä»£ç å¯¹è±¡, cl_device_id è®¾å¤‡åˆ—è¡¨[0], cl_program_build_info å‚æ•°å, size_t æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, NULL);
+æŸ¥è¯¢è¿”å›å€¼[æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°] = "\0";
 ```
 ```
-cl_int clGetPlatformInfo ( cl_platform_id Æ½Ì¨ÁĞ±í[0], cl_platform_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı); 
-	//È·¶¨¾ßÌåÊ¹ÓÃÄÄÒ»¸öÒÑ¶¨ÒåµÄÊµÏÖÆ½Ì¨
-	//²éÑ¯ĞÅÏ¢£º
-		CL_PLATFORM_PROFILE£ºÊµÏÖËùÖ§³ÖµÄ¼òµµÃû³Æ£¬ÓĞFULL_PROFILE£¨ÊµÏÖÖ§³Ö OpenCL ¹æ·¶£©ºÍEMBEDDED_PROFILE£¨ÊµÏÖÖ§³Ö OpenCLÇ¶ÈëÊ½¼òµµ£©Á½ÖÖ
-		CL_PLATFORM_VERSION£ºOpenCL°æ±¾
-		CL_PLATFORM_NAME£ºÆ½Ì¨Ãû×Ö
-		CL_PLATFORM_VENDOR£ºÆ½Ì¨¹©Ó¦ÉÌ
-		CL_PLATFORM_EXTENSIONS£ºÆ½Ì¨ËùÖ§³ÖµÄÀ©Õ¹Ãû×ÖµÄÁĞ±í
-cl_int clGetDeviceInfo ( cl_device_id Éè±¸ÁĞ±í[0], cl_device_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//»ñÈ¡Ò»¸ö OpenCL Éè±¸µÄÌØ¶¨ĞÅÏ¢
+cl_int clGetPlatformInfo ( cl_platform_id å¹³å°åˆ—è¡¨[0], cl_platform_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°); 
+	//ç¡®å®šå…·ä½“ä½¿ç”¨å“ªä¸€ä¸ªå·²å®šä¹‰çš„å®ç°å¹³å°
+	//æŸ¥è¯¢ä¿¡æ¯ï¼š
+		CL_PLATFORM_PROFILEï¼šå®ç°æ‰€æ”¯æŒçš„ç®€æ¡£åç§°ï¼Œæœ‰FULL_PROFILEï¼ˆå®ç°æ”¯æŒ OpenCL è§„èŒƒï¼‰å’ŒEMBEDDED_PROFILEï¼ˆå®ç°æ”¯æŒ OpenCLåµŒå…¥å¼ç®€æ¡£ï¼‰ä¸¤ç§
+		CL_PLATFORM_VERSIONï¼šOpenCLç‰ˆæœ¬
+		CL_PLATFORM_NAMEï¼šå¹³å°åå­—
+		CL_PLATFORM_VENDORï¼šå¹³å°ä¾›åº”å•†
+		CL_PLATFORM_EXTENSIONSï¼šå¹³å°æ‰€æ”¯æŒçš„æ‰©å±•åå­—çš„åˆ—è¡¨
+cl_int clGetDeviceInfo ( cl_device_id è®¾å¤‡åˆ—è¡¨[0], cl_device_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//è·å–ä¸€ä¸ª OpenCL è®¾å¤‡çš„ç‰¹å®šä¿¡æ¯
 ```
 ```	
-cl_int clRetainContext (cl_context ÉÏÏÂÎÄ);
-	//Ôö´óÉÏÏÂÎÄµÄÒıÓÃ¼ÆÊı
-cl_int clReleaseContext ( cl_context ÉÏÏÂÎÄ);
-	//¼õĞ¡ÉÏÏÂÎÄµÄÒıÓÃ¼ÆÊı
-cl_int clGetContextInfo (cl_context ÉÏÏÂÎÄ, cl_context_info param_name, cl_device_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//²éÑ¯ÉÏÏÂÎÄÏà¹ØĞÅÏ¢
-	//²éÑ¯ĞÅÏ¢£º
-		CL_CONTEXT_REFERENCE_COUNT£ºÉÏÏÂÎÄµÄÒıÓÃ¼ÆÊı
-		CL_CONTEXT_DEVICES£ºÉÏÏÂÎÄÖĞµÄÉè±¸ÁĞ±í
-		CL_CONTEXT_PROPERTIES£ºÉÏÏÂÎÄÊôĞÔ
+cl_int clRetainContext (cl_context ä¸Šä¸‹æ–‡);
+	//å¢å¤§ä¸Šä¸‹æ–‡çš„å¼•ç”¨è®¡æ•°
+cl_int clReleaseContext ( cl_context ä¸Šä¸‹æ–‡);
+	//å‡å°ä¸Šä¸‹æ–‡çš„å¼•ç”¨è®¡æ•°
+cl_int clGetContextInfo (cl_context ä¸Šä¸‹æ–‡, cl_context_info param_name, cl_device_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//æŸ¥è¯¢ä¸Šä¸‹æ–‡ç›¸å…³ä¿¡æ¯
+	//æŸ¥è¯¢ä¿¡æ¯ï¼š
+		CL_CONTEXT_REFERENCE_COUNTï¼šä¸Šä¸‹æ–‡çš„å¼•ç”¨è®¡æ•°
+		CL_CONTEXT_DEVICESï¼šä¸Šä¸‹æ–‡ä¸­çš„è®¾å¤‡åˆ—è¡¨
+		CL_CONTEXT_PROPERTIESï¼šä¸Šä¸‹æ–‡å±æ€§
 ```
 ```		
-cl_int clRetainCommandQueue( cl_command_queue ÃüÁî¶ÓÁĞ);
-	//Ôö´óÃüÁî¶ÓÁĞµÄÒıÓÃ¼ÆÊı
-cl_int clReleaseCommandQueue( cl_command_queue ÃüÁî¶ÓÁĞ);
-	//¼õĞ¡ÃüÁî¶ÓÁĞµÄÒıÓÃ¼ÆÊı
-cl_int clGetCommandQueueInfo( cl_command_queue ÃüÁî¶ÓÁĞ, cl_context_info param_name, cl_device_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//²éÑ¯ÃüÁî¶ÓÁĞÏà¹ØĞÅÏ¢
-	//²éÑ¯ĞÅÏ¢£º
-		CL_QUEUE_CONTEXT:´´½¨ÃüÁî¶ÓÁĞÊ±ËùÖ¸¶¨µÄÉÏÏÂÎÄ
-		CL_QUEUE_DEVICE:´´½¨ÃüÁî¶ÓÁĞÊ±ËùÖ¸¶¨µÄÉè±¸
-		CL_QUEUE_REFERENCE_COUNT:ÃüÁî¶ÓÁĞµÄÒıÓÃ¼ÆÊı
-		CL_QUEUE_PROPERTIES:ÃüÁî¶ÓÁĞµÄ¶ÓÁĞÊôĞÔ
+cl_int clRetainCommandQueue( cl_command_queue å‘½ä»¤é˜Ÿåˆ—);
+	//å¢å¤§å‘½ä»¤é˜Ÿåˆ—çš„å¼•ç”¨è®¡æ•°
+cl_int clReleaseCommandQueue( cl_command_queue å‘½ä»¤é˜Ÿåˆ—);
+	//å‡å°å‘½ä»¤é˜Ÿåˆ—çš„å¼•ç”¨è®¡æ•°
+cl_int clGetCommandQueueInfo( cl_command_queue å‘½ä»¤é˜Ÿåˆ—, cl_context_info param_name, cl_device_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//æŸ¥è¯¢å‘½ä»¤é˜Ÿåˆ—ç›¸å…³ä¿¡æ¯
+	//æŸ¥è¯¢ä¿¡æ¯ï¼š
+		CL_QUEUE_CONTEXT:åˆ›å»ºå‘½ä»¤é˜Ÿåˆ—æ—¶æ‰€æŒ‡å®šçš„ä¸Šä¸‹æ–‡
+		CL_QUEUE_DEVICE:åˆ›å»ºå‘½ä»¤é˜Ÿåˆ—æ—¶æ‰€æŒ‡å®šçš„è®¾å¤‡
+		CL_QUEUE_REFERENCE_COUNT:å‘½ä»¤é˜Ÿåˆ—çš„å¼•ç”¨è®¡æ•°
+		CL_QUEUE_PROPERTIES:å‘½ä»¤é˜Ÿåˆ—çš„é˜Ÿåˆ—å±æ€§
 ```
 ```
-cl_int clRetainMemObject( cl_mem ÄÚ´æ¿Õ¼ä);
-	//Ôö´óÄÚ´æ¿Õ¼äµÄÒıÓÃ¼ÆÊı
-cl_int clReleaseMemObject( cl_mem ÄÚ´æ¿Õ¼ä);
-	//¼õĞ¡ÄÚ´æ¿Õ¼äµÄÒıÓÃ¼ÆÊı
+cl_int clRetainMemObject( cl_mem å†…å­˜ç©ºé—´);
+	//å¢å¤§å†…å­˜ç©ºé—´çš„å¼•ç”¨è®¡æ•°
+cl_int clReleaseMemObject( cl_mem å†…å­˜ç©ºé—´);
+	//å‡å°å†…å­˜ç©ºé—´çš„å¼•ç”¨è®¡æ•°
 ```
 ```		
-cl_int clGetSupportedImageFormats( cl_context ÉÏÏÂÎÄ, cl_mem_flags ¶ÁĞ´×´Ì¬, cl_mem_object_type Í¼ÏñÀàĞÍ, cl_uint Í¼Ïñ¸ñÊ½Ö§³ÖÁĞ±íÄÚ´æ×î¶à¿ÉÒÔ´æ´¢¶àÉÙÌõÍ¼Ïñ¸ñÊ½, cl_image_format* Í¼Ïñ¸ñÊ½Ö§³ÖÁĞ±í, cl_uint* ËùÖ§³ÖÍ¼Ïñ¸ñÊ½µÄÊµ¼ÊÊıÄ¿);
-	//»ñÈ¡OpenCLÊµÏÖËùÖ§³ÖµÄÍ¼Ïñ¸ñÊ½ÁĞ±í
-	//Í¼ÏñÀàĞÍ£ºCL_MEM_OBJECT_IMAGE2D »ò CL_MEM_OBJECT_IMAGE3D
+cl_int clGetSupportedImageFormats( cl_context ä¸Šä¸‹æ–‡, cl_mem_flags è¯»å†™çŠ¶æ€, cl_mem_object_type å›¾åƒç±»å‹, cl_uint å›¾åƒæ ¼å¼æ”¯æŒåˆ—è¡¨å†…å­˜æœ€å¤šå¯ä»¥å­˜å‚¨å¤šå°‘æ¡å›¾åƒæ ¼å¼, cl_image_format* å›¾åƒæ ¼å¼æ”¯æŒåˆ—è¡¨, cl_uint* æ‰€æ”¯æŒå›¾åƒæ ¼å¼çš„å®é™…æ•°ç›®);
+	//è·å–OpenCLå®ç°æ‰€æ”¯æŒçš„å›¾åƒæ ¼å¼åˆ—è¡¨
+	//å›¾åƒç±»å‹ï¼šCL_MEM_OBJECT_IMAGE2D æˆ– CL_MEM_OBJECT_IMAGE3D
 ```
 ```	
-cl_int clGetMemObjectInfo( cl_mem ÄÚ´æ/Í¼Ïñ¿Õ¼ä, cl_mem_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//»ñÈ¡ÄÚ´æ/Í¼Ïñ¿Õ¼ä¹²ÓĞµÄĞÅÏ¢
-cl_int clGetImageInfo (cl_mem Í¼Ïñ¿Õ¼ä, cl_image_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//»ñÈ¡Í¼Ïñ¿Õ¼äÌØÓĞµÄĞÅÏ¢
+cl_int clGetMemObjectInfo( cl_mem å†…å­˜/å›¾åƒç©ºé—´, cl_mem_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//è·å–å†…å­˜/å›¾åƒç©ºé—´å…±æœ‰çš„ä¿¡æ¯
+cl_int clGetImageInfo (cl_mem å›¾åƒç©ºé—´, cl_image_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//è·å–å›¾åƒç©ºé—´ç‰¹æœ‰çš„ä¿¡æ¯
 ```
 ```
-cl_int clRetainProgram( cl_program ºË´úÂë¶ÔÏó);
-	//Ôö´óºË´úÂë¶ÔÏóµÄÒıÓÃ¼ÆÊı
-cl_int clReleaseProgram( cl_program ºË´úÂë¶ÔÏó);
-	//¼õĞ¡ºË´úÂë¶ÔÏóµÄÒıÓÃ¼ÆÊı
-cl_int clGetProgramInfo( cl_program ºË´úÂë¶ÔÏó, cl_program_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//»ñÈ¡³ÌĞò¶ÔÏóµÄĞÅÏ¢		  
-cl_int clGetProgramBuildInfo( cl_program ºË´úÂë¶ÔÏó, cl_device_id Éè±¸ÁĞ±í[0], cl_program_build_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//²é¿´±àÒëĞÅÏ¢
+cl_int clRetainProgram( cl_program æ ¸ä»£ç å¯¹è±¡);
+	//å¢å¤§æ ¸ä»£ç å¯¹è±¡çš„å¼•ç”¨è®¡æ•°
+cl_int clReleaseProgram( cl_program æ ¸ä»£ç å¯¹è±¡);
+	//å‡å°æ ¸ä»£ç å¯¹è±¡çš„å¼•ç”¨è®¡æ•°
+cl_int clGetProgramInfo( cl_program æ ¸ä»£ç å¯¹è±¡, cl_program_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//è·å–ç¨‹åºå¯¹è±¡çš„ä¿¡æ¯		  
+cl_int clGetProgramBuildInfo( cl_program æ ¸ä»£ç å¯¹è±¡, cl_device_id è®¾å¤‡åˆ—è¡¨[0], cl_program_build_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//æŸ¥çœ‹ç¼–è¯‘ä¿¡æ¯
 ```
 ```	
-cl_int clRetainKernel( cl_kernel ºË¶ÔÏó);
-	//Ôö´óºË¶ÔÏóµÄÒıÓÃ¼ÆÊı
-cl_int clReleaseKernel( cl_kernel ºË¶ÔÏó);	
-	//¼õĞ¡ºË¶ÔÏóµÄÒıÓÃ¼ÆÊı
-cl_int clGetKernelInfo (cl_kernel ºË¶ÔÏó, cl_kernel_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//²é¿´ºË¶ÔÏóĞÅÏ¢
-cl_int clGetKernelWorkGroupInfo (cl_kernel ºË¶ÔÏó, cl_device_id Éè±¸ÁĞ±í[0], cl_kernel_work_group_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//²é¿´Ä³Éè±¸ÉÏºË¶ÔÏóĞÅÏ¢	
+cl_int clRetainKernel( cl_kernel æ ¸å¯¹è±¡);
+	//å¢å¤§æ ¸å¯¹è±¡çš„å¼•ç”¨è®¡æ•°
+cl_int clReleaseKernel( cl_kernel æ ¸å¯¹è±¡);	
+	//å‡å°æ ¸å¯¹è±¡çš„å¼•ç”¨è®¡æ•°
+cl_int clGetKernelInfo (cl_kernel æ ¸å¯¹è±¡, cl_kernel_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//æŸ¥çœ‹æ ¸å¯¹è±¡ä¿¡æ¯
+cl_int clGetKernelWorkGroupInfo (cl_kernel æ ¸å¯¹è±¡, cl_device_id è®¾å¤‡åˆ—è¡¨[0], cl_kernel_work_group_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//æŸ¥çœ‹æŸè®¾å¤‡ä¸Šæ ¸å¯¹è±¡ä¿¡æ¯	
 ```
 ```	
 cl_ulong startTime;
 clGetEventProfilingInfo( ev, CL_PROFILING_COMMAND_START, sizeof(cl_ulong), &startTime, NULL);	
 ```
 
-### 7.ÊÍ·Å
+### 7.é‡Šæ”¾
 ```
-clReleaseKernel(ºË¶ÔÏó);
-clReleaseProgram(ºË´úÂë¶ÔÏó);
+clReleaseKernel(æ ¸å¯¹è±¡);
+clReleaseProgram(æ ¸ä»£ç å¯¹è±¡);
 clUnloadCompiler (void);
-clReleaseCommandQueue(ÃüÁî¶ÓÁĞ);
-clReleaseMemObject(ÄÚ´æ¿Õ¼ä);
-clReleaseContext(ÉÏÏÂÎÄ);
+clReleaseCommandQueue(å‘½ä»¤é˜Ÿåˆ—);
+clReleaseMemObject(å†…å­˜ç©ºé—´);
+clReleaseContext(ä¸Šä¸‹æ–‡);
 ```
 
-### 8.²ÉÑùÆ÷
+### 8.é‡‡æ ·å™¨
 ```	
-cl_sampler ²ÉÑùÆ÷ = clCreateSampler( cl_context ÉÏÏÂÎÄ, cl_bool ÊÇ·ñ¹æ·¶»¯, cl_addressing_mode ´¦ÀíÔ½½çÍ¼Ïñ×ø±ê·½Ê½, cl_filter_mode ¶ÁÈ¡Í¼ÏñÊ±Ëù²ÉÓÃµÄÂË²¨Ä£Ê½, cl_int* (&µ÷ÓÃ×´Ì¬))
-	//´´½¨Ò»¸ö²ÉÑùÆ÷¶ÔÏó
-	//ÊÇ·ñ¹æ·¶»¯£ºCL_TRUE »ò CL_FALSE
-	//´¦ÀíÔ½½çÍ¼Ïñ×ø±ê·½Ê½£ºCL_ADDRESS_REPEAT¡¢CL_ADDRESS_CLAMP_TO_EDGE¡¢CL_ADDRESS_CLAMP¡¢CL_ADDRESS_NONE
-	//¶ÁÈ¡Í¼ÏñÊ±Ëù²ÉÓÃµÄÂË²¨Ä£Ê½£ºCL_FILTER_NEAREST »ò CL_FILTER_LINEAR
-cl_int clRetainSampler (cl_sampler ²ÉÑùÆ÷);
-	//Ôö´ó²ÉÑùÆ÷µÄÒıÓÃ¼ÆÊı
-cl_int clReleaseSampler (cl_sampler ²ÉÑùÆ÷);
-	//¼õĞ¡²ÉÑùÆ÷µÄÒıÓÃ¼ÆÊı
-cl_int clGetSamplerInfo (cl_sampler ²ÉÑùÆ÷, cl_mem_info ²éÑ¯ĞÅÏ¢, size_t ²éÑ¯·µ»ØÖµ×Ö½ÚÊı, void* ²éÑ¯·µ»ØÖµ, size_t* ²éÑ¯·µ»ØÖµÊµ¼Ê×Ö½ÚÊı);
-	//»ñÈ¡²ÉÑùÆ÷Ïà¹ØĞÅÏ¢
+cl_sampler é‡‡æ ·å™¨ = clCreateSampler( cl_context ä¸Šä¸‹æ–‡, cl_bool æ˜¯å¦è§„èŒƒåŒ–, cl_addressing_mode å¤„ç†è¶Šç•Œå›¾åƒåæ ‡æ–¹å¼, cl_filter_mode è¯»å–å›¾åƒæ—¶æ‰€é‡‡ç”¨çš„æ»¤æ³¢æ¨¡å¼, cl_int* (&è°ƒç”¨çŠ¶æ€))
+	//åˆ›å»ºä¸€ä¸ªé‡‡æ ·å™¨å¯¹è±¡
+	//æ˜¯å¦è§„èŒƒåŒ–ï¼šCL_TRUE æˆ– CL_FALSE
+	//å¤„ç†è¶Šç•Œå›¾åƒåæ ‡æ–¹å¼ï¼šCL_ADDRESS_REPEATã€CL_ADDRESS_CLAMP_TO_EDGEã€CL_ADDRESS_CLAMPã€CL_ADDRESS_NONE
+	//è¯»å–å›¾åƒæ—¶æ‰€é‡‡ç”¨çš„æ»¤æ³¢æ¨¡å¼ï¼šCL_FILTER_NEAREST æˆ– CL_FILTER_LINEAR
+cl_int clRetainSampler (cl_sampler é‡‡æ ·å™¨);
+	//å¢å¤§é‡‡æ ·å™¨çš„å¼•ç”¨è®¡æ•°
+cl_int clReleaseSampler (cl_sampler é‡‡æ ·å™¨);
+	//å‡å°é‡‡æ ·å™¨çš„å¼•ç”¨è®¡æ•°
+cl_int clGetSamplerInfo (cl_sampler é‡‡æ ·å™¨, cl_mem_info æŸ¥è¯¢ä¿¡æ¯, size_t æŸ¥è¯¢è¿”å›å€¼å­—èŠ‚æ•°, void* æŸ¥è¯¢è¿”å›å€¼, size_t* æŸ¥è¯¢è¿”å›å€¼å®é™…å­—èŠ‚æ•°);
+	//è·å–é‡‡æ ·å™¨ç›¸å…³ä¿¡æ¯
 ```
