@@ -125,8 +125,8 @@ event_wait_listºÍnum_events_in_wait_listÖ¸¶¨ÔÚÖ´ĞĞ´ËÃüÁîÇ°±ØĞëÍê³ÉµÄÊÂ¼ş£¬event·
 
 ```
 const char* ºË´úÂë = {
-"__kernel				",
-"void ºËº¯ÊıÃû( __global ĞÎ²Î){}	"}
+    "__kernel				",
+    "void ºËº¯ÊıÃû( __global ĞÎ²Î){}	"}
 //»ò
 const char* ºË´úÂëÎÄ¼şÂ·¾¶ = shrFindFilePath( "ºËº¯ÊıÎÄ¼şÃû.cl", NULL);
 const char* ºË´úÂë = oclLoadProgSource( ºË´úÂëÎÄ¼şÂ·¾¶, "", &ÎÄ¼ş³¤¶È);
