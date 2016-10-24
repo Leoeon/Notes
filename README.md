@@ -2,6 +2,9 @@
 
 ### 数学
 
+[优化]
+(https://github.com/Leoeon/Notes/blob/master/math/%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0.pdf)
+
 [群论]
 (https://github.com/Leoeon/Notes/blob/master/math/%E7%BE%A4%E8%AE%BA%E7%AC%94%E8%AE%B0.pdf)
 
