@@ -1,4 +1,4 @@
-﻿#OpenCL笔记
+# OpenCL笔记
 
 Author:	Leoeon    
 Date:	2015.07.04
