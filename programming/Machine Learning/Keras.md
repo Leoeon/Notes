@@ -1,8 +1,10 @@
-# 模型
+# Keras 笔记
 
-## 基本模型
+## 模型
 
-### 抽象层
+### 基本模型
+
+#### 抽象层
 
 ```python
 from keras.layers import 抽象层
@@ -10,20 +12,20 @@ from keras.layers import 抽象层
 
 ```python
 网络结构 = 抽象层( 输出维度, input_shape=(第一维大小,第二维大小), name="本层命名", 其他参数 )
-# 或
+## 或
 网络结构 = 抽象层( 输出维度, batch_input_shape=(固定batch大小,第一维大小,第二维大小), name="本层命名", 其他参数 )
 ```
 部分层的输出维度可自动推断，则可省略  
 部分非首层的输入维度可自动推断，则可省略
 
-### Sequancial
+#### Sequancial
 ```python
 顺序模型 = keras.models.Sequential()
 顺序模型.add(网络结构)
 ```
 
 
-### 泛型模型
+#### 泛型模型
 ```python
 输出张量 = 网络结构(输入张量)
 泛型模型 = keras.models.Model(input=[总输入张量壹,总输入张量贰], output=[总输出张量壹,总输出张量贰])
@@ -32,9 +34,9 @@ from keras.layers import 抽象层
 
 
 
-# 流程
+## 流程
 
-## 编译
+### 编译
 ```python
 模型.compile(
 	optimizer    = 优化器,
@@ -54,7 +56,7 @@ from keras.layers import 抽象层
 预设指标：
 - 'accuracy'
 
-## 训练
+### 训练
 ```python
 模型.fit(
 	输入数据,                                     # 单输入数据为numpy array，多输入数据为numpy array的list
@@ -72,18 +74,18 @@ from keras.layers import 抽象层
 
 
 
-# 其他
+## 其他
 
-## 预设抽象层
+### 预设抽象层
 
-### Input
+#### Input
 ```python
 输出张量 = keras.engine.topology.Input(shape=(输入维数),其他输入参数)
 ```
 
-### 连接层
+#### 连接层
 
-#### 全连接层
+##### 全连接层
 ```python
 网络结构 = keras.layers.core.Dense(
 	输出维度, 
@@ -99,7 +101,7 @@ from keras.layers import 抽象层
 	)  
 ```
 
-#### 卷积层
+##### 卷积层
 ```python
 网络结构 = keras.layers.convolutional.Convolution2D(
 	nb_filter            = 卷积核数目, 
@@ -120,21 +122,21 @@ from keras.layers import 抽象层
 	)
 ```
 
-### 非线性
+#### 非线性
 
-#### Activation
+##### Activation
 ```python
 网络结构 = keras.layers.core.Activation(激活函数)
 网络结构 = keras.layers.advanced_activations.LeakyReLU(alpha=0.3)
 ```
 
 
-#### Dropout
+##### Dropout
 ```python
 网络结构 = keras.layers.core.Dropout(断开概率)
 ```
 
-#### Batch Normalization
+##### Batch Normalization
 ```python
 keras.layers.normalization.BatchNormalization(
 	epsilon=1e-06, 
@@ -147,9 +149,9 @@ keras.layers.normalization.BatchNormalization(
 ```
 
 
-### 张量变换
+#### 张量变换
 
-#### Merge
+##### Merge
 ```python
 输出结构 = keras.engine.topology.Merge( [输入结构壹, 输入结构贰], mode=合并函数 )
 输出张量 = keras.engine.topology.merge( [输入张量壹, 输入张量贰], mode=合并函数 )
@@ -164,7 +166,7 @@ keras.layers.normalization.BatchNormalization(
 
 可用 ```mode=自定义合并函数``` 替代
 
-#### 转换维数
+##### 转换维数
 
 将输入层转为新的维数（不包含batch维）
 ```python
@@ -183,7 +185,7 @@ keras.layers.normalization.BatchNormalization(
 
 
 
-## 存储
+### 存储
 ```python
 旧模型.save("文件名")
 新模型 = keras.models.load_model("文件名")
