@@ -18,16 +18,16 @@
 
 ##### 深度学习原理尝试
 - 网络内部机理：
-- - [机器学习展平流形](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/disentangle%20manifold.md)
-- - [优先拟合低频分量](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/Fourier.pdf) 
+  - [机器学习展平流形](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/disentangle%20manifold.md)
+  - [优先拟合低频分量](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/Fourier.pdf) 
 - 模型精度分析：
-- - [神经网络拟合哈密顿量](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/Hamiltonian.pdf)
-- - [误差估计](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/epsilon%20error.pdf)
-- - [误差幂律](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/error%20power-law.pdf)
+  - [神经网络拟合哈密顿量](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/Hamiltonian.pdf)
+  - [误差估计](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/epsilon%20error.pdf)
+  - [误差幂律](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/error%20power-law.pdf)
 - 可视化：
-- - [线性网络神经元可视化](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/visualization-linear.pdf)
-- - [卷积网络可视化](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/visualization-CNN.md)
-- - [神经元与概念](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/neural%20and%20concept.pdf)
+  - [线性网络神经元可视化](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/visualization-linear.pdf)
+  - [卷积网络可视化](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/visualization-CNN.md)
+  - [神经元与概念](https://github.com/Leoeon/Notes/blob/master/machine%20learning/DL%20theary/neural%20and%20concept.pdf)
 
 # 编程
 
